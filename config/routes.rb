@@ -32,6 +32,8 @@ WebApp::Application.routes.draw do
   end
 
   resources :teachers 
+  
+  resources :ins_firsts
 
   resources :classes,:path => "/:school_name/classes/" do
     member do
@@ -39,6 +41,8 @@ WebApp::Application.routes.draw do
       get :invite_students
       post :create_invited_students
       get :graphs
+     
+      
     end
     collection do
       put :switch_theme

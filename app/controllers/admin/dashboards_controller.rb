@@ -5,4 +5,5 @@ class Admin::DashboardsController < ApplicationController
   def index
     @schools = SchoolAdmin.where("admin_id = #{current_admin.id}").all
   end
+  
 end

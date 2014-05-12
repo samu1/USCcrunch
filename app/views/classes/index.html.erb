@@ -1,0 +1,151 @@
+<div id="Tweet-summary" style="float: left;
+     left: 14px;top: 3px;
+     position: relative;
+     width: 100%;">
+  <div id="title">Listing Marks</div>
+
+  <table border="1" width="100%">
+    <tr>
+      <th>s_name</th>
+      <th>s_no</th>
+      <th>s_m1</th>
+      <th>s_m2</th>
+      <th>s_m3</th>
+      <th>s_m4</th>
+      <th>s_m5</th>
+      
+      <th></th>
+    </tr>
+    <% @instructorfirstclasses.each do |user| %>
+      <tr style="text-align: center;">
+        <td><%= user.name %></td>
+        <td><%= user.no %></td>
+        <td><%= user.m1 %></td>
+        <td><%= user.m2 %></td>
+        <td><%= user.m3 %></td>
+        <td><%= user.m4 %></td>
+        <td><%= user.m5 %></td>
+        
+        <td>
+          <%= link_to 'Show' , class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+
+          <% if current_user.role == 'teacher' %>
+      <%= link_to 'Edit' , edit_class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+
+            <%=  link_to "delete", class_path(:school_name => current_user.school_admin.school,:id =>user.id), :method=>:delete,:data=>{:confirm=>"are u sure?"}%> 
+
+          <%else%> 
+    <%#= link_to 'join' , join_class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+            <%= link_to user.join == false ? "join" : "joined", manage_join_class_path(:id =>user.id)%>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div><br />
+<% if current_user.role == 'teacher' %>
+  <%= link_to "Sem1", new_class_path %>
+<%end%>
+
+
+<div id="Tweet-summary" style="float: left;
+     left: 14px;top: 3px;
+     position: relative;
+     width: 100%;">
+  <div id="title">Semester</div>
+
+
+
+<table border="1" width="100%">
+    <tr>
+      <th>sname</th>
+      <th>sno</th>
+      <th>sm1</th>
+      <th>sm2</th>
+      <th>sm3</th>
+      <th>sm4</th>
+      <th>sm5</th>
+      
+      <th></th>
+    </tr>
+    <% @insfirsts.each do |user| %>
+      <tr style="text-align: center;">
+        <td><%= user.sname %></td>
+        <td><%= user.sno %></td>
+        <td><%= user.sm1 %></td>
+        <td><%= user.sm2 %></td>
+        <td><%= user.sm3 %></td>
+        <td><%= user.sm4 %></td>
+        <td><%= user.sm5 %></td>
+        
+        <td>
+          <%= link_to 'Show' , class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+
+          <% if current_user.role == 'teacher' %>
+      <%= link_to 'Edit' , edit_class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+
+            <%=  link_to "delete", class_path(:school_name => current_user.school_admin.school,:id =>user.id), :method=>:delete,:data=>{:confirm=>"are u sure?"}%> 
+
+          <%else%> 
+    <%#= link_to 'join' , join_class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+            <%= link_to user.join == false ? "join" : "joined", manage_join_class_path(:id =>user.id)%>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div><br />
+<% if current_user.role == 'teacher' %>
+  <%= link_to "Sem2", new_ins_first_path %>
+<%end%>
+
+<div id="Tweet-summary" style="float: left;
+     left: 14px;top: 3px;
+     position: relative;
+     width: 100%;">
+  <div id="title">Semester</div>
+
+
+
+<table border="1" width="100%">
+    <tr>
+      <th>s1name</th>
+      <th>s1no</th>
+      <th>s1m1</th>
+      <th>s1m2</th>
+      <th>s1m3</th>
+      <th>s1m4</th>
+      <th>s1m5</th>
+      
+      <th></th>
+    </tr>
+    <% @insseconds.each do |user| %>
+      <tr style="text-align: center;">
+        <td><%= user.s1name %></td>
+        <td><%= user.s1no %></td>
+        <td><%= user.s1m1 %></td>
+        <td><%= user.s1m2 %></td>
+        <td><%= user.s1m3 %></td>
+        <td><%= user.s1m4 %></td>
+        <td><%= user.s1m5 %></td>
+        
+        <td>
+          <%= link_to 'Show' , class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+
+          <% if current_user.role == 'teacher' %>
+      <%= link_to 'Edit' , edit_class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+
+            <%=  link_to "delete", class_path(:school_name => current_user.school_admin.school,:id =>user.id), :method=>:delete,:data=>{:confirm=>"are u sure?"}%> 
+
+          <%else%> 
+    <%#= link_to 'join' , join_class_path(:school_name => current_user.school_admin.school,:id =>user.id) %>|
+            <%= link_to user.join == false ? "join" : "joined", manage_join_class_path(:id =>user.id)%>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div><br />
+<% if current_user.role == 'teacher' %>
+  <%= link_to "Sem3", new_class_path %>
+<%end%>

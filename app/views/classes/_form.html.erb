@@ -1,0 +1,59 @@
+
+<%=link_to "back",classes_path%>
+
+
+<%= form_for @instructorfirstclass, :url => classes_path(), :method => 'POST' do |f| %>
+
+<% if  @instructorfirstclass.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize( @instructorfirstclass.errors.count, "error") %> 
+        prohibited this class from being saved:</h2>
+
+      <ul>
+        <%  @instructorfirstclass.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div> 
+    <%= f.label :name %>
+    <%=  f.text_field :name%>
+  </div>
+
+   <div> 
+    <%= f.label :no %>
+    <%=  f.text_field :no%>
+  </div>
+ <div> 
+    <%= f.label :m1 %>
+    <%=  f.text_field :m1%>
+  </div>
+ <div> 
+    <%= f.label :m2 %>
+    <%=  f.text_field :m2%>
+  </div> <div> 
+    <%= f.label :m3 %>
+    <%=  f.text_field :m3%>
+  </div> <div> 
+    <%= f.label :m4 %>
+    <%=  f.text_field :m4%>
+  </div>
+ <div> 
+    <%= f.label :m5 %>
+    <%=  f.text_field :m5%>
+  </div>
+
+
+
+
+  <div> 
+    <%=  f.submit{@instructorfirstclass.new_record? ? "save" : "update" }%>   
+  </div> 
+
+ 
+<%  end %>
+
+
+

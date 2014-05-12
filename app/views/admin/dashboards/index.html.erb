@@ -1,12 +1,20 @@
+<!%= link_to "Teacher" %>
+
+<!%= link_to "Students" %>
+
+<!%= link_to "Section" %>
+
+
+
 <div id="Tweet-summary" style="float: left;
      left: 14px;top: 3px;
-     position: relative;
+    position: relative;
      width: 100%;">
   <div id="title">Schools</div>
   <% if @schools.present? %>
     <table border="1" width="100%">
       <tr>
-        <th>First Name</th>
+        <th>First </th>
         <th>Last Name</th>
         <th>Email</th>
         <th>School Name</th>
@@ -19,6 +27,7 @@
           <td><%= school.email %></td>
           <td><%= school.school_name %></td>
           <td><%= link_to "Delete", school_path(school), :method => :delete, :confirm => "Are You Sure..", :remote => true %></td>
+          
         </tr>
       <% end %>
     </table>

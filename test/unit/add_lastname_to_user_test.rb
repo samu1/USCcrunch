@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TeacherTest < ActiveSupport::TestCase
+class AddLastnameToUserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

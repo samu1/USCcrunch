@@ -3,12 +3,24 @@
   <%= form_for(@teacher, :url => school_teachers_path(@school),:html => {:id => "commentForm"}) do |f| %>
     <table>
       <tr>
-        <td valign="top">First Name:</td>
-        <td><%= f.text_field :first_name, :class => 'required', :id => "cfame"%></td>
+        <td valign="top">Tid:</td>
+        <td><%= f.text_field :tid, :class => 'required', :id => "cfame"%></td>
       </tr>
       <tr>
-        <td valign="top">Last Name:</td>
-        <td><%= f.text_field :last_name, :class => 'required', :id => "lfame"%></td>
+        <td valign="top">TeacherName:</td>
+        <td><%= f.text_field :tname, :class => 'required', :id => "lfame"%></td>
+      </tr>
+      <tr>
+        <td valign="top">teacherClass:</td>
+        <td><%= f.text_field :teacher_class, :class => 'required', :id => "lfame"%></td>
+      </tr>
+      <tr>
+        <td valign="top">Subject:</td>
+        <td><%= f.text_field :subject, :class => 'required', :id => "lfame"%></td>
+      </tr>
+      <tr>
+        <td valign="top">Contact:</td>
+        <td><%= f.text_field :contact, :class => 'required', :id => "lfame"%></td>
       </tr>
       <tr>
         <td valign="top">Email:</td>

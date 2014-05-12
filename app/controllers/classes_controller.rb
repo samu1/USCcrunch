@@ -2,21 +2,51 @@ class ClassesController < ApplicationController
   before_filter :is_login?
   layout :get_layout
 
+  def new
+    @instructorfirstclass = InstructorfirstClass.new
+  end
+  
+ 
+  def find
+    @instructorfirstclass = Instructorfirst_class.new
+    @insfirst = InsFirst.new
+  end
+  
+ 
+  def create
+
+    @instructorfirstclass  =   InstructorfirstClass.new(params[:instructorfirst_class])
+    if @instructorfirstclass.save
+     flash[:notice] = "marks created!"
+     redirect_to classes_path
+    else
+      
+      render action: "new"
+    end
+  end
+
+  
   def index
-    
+    @instructorfirstclasses = InstructorfirstClass.all
+    puts "=============="
+        
+    @insfirsts = InsFirst.all
+    @insseconds = InsSecond.all
   end
 
   def switch_theme
-    @user = User.find(params[:id])
+    @user = InstructorfirstClass.find(params[:id])
     @user.update_attribute(:class_theme, params[:url])
     render :update do |page|
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    @user =  InstructorfirstClass.find(params[:id])
+    #@user = InsFirst.find(params[:id])
+    #@user = InsSecond.find(params[:id])
     @header = "Posts"
-    @posts = Tweet.where("tweet_id IS NULL and users.school_admin_id = '#{@user.school_admin_id}'").joins("left join users on users.id = tweets.user_id").order("created_at Desc").paginate :per_page => 20, :page => params[:page]
+    #@posts = Tweet.where("tweet_id IS NULL and users.school_admin_id = '#{@user.user.school_admin_id}'").joins("left join users on users.id = tweets.user_id").order("created_at Desc").paginate :per_page => 20, :page => params[:page]
     respond_to do |format|
       format.html {render :partial => "show", :layout => false if request.xhr?}
       format.js {render :partial => "show", :layout => false if request.xhr?}
@@ -24,7 +54,7 @@ class ClassesController < ApplicationController
   end
 
   def graphs
-    @user = User.find(params[:id])
+    @user =  InstructorfirstClass.find(params[:id])
     @tt = Time.now.strftime("%m/%d/%Y")
     if params[:point] == '1d'
       @datess = (Time.now - 1.day).strftime("%m/%d/%Y")
@@ -170,15 +200,11 @@ class ClassesController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    if @user.id != current_user.id
-      flash[:error] = 'Access Denied.'
-      redirect_to class_path(:school_name => current_user.school_admin.school,:id =>current_user.id)
-    end
+    @user =  InstructorfirstClass.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = Instuctor.find(params[:id])
     if params[:user][:syllabus].present?
       params[:user][:syllabus_link] = nil
     end
@@ -192,16 +218,16 @@ class ClassesController < ApplicationController
   end
 
   def roster
-    @user = User.find(params[:id])
-    @users = User.where("role = 'student' and reset_password_token IS NULL")
+    @user = InstructorfirstClass.find(params[:id])
+    @users =  InstructorfirstClass.where("role = 'student' and reset_password_token IS NULL")
   end
 
   def invite_students
-    @user = User.find(params[:id])
+    @user =  InstructorfirstClass.find(params[:id])
   end
 
   def create_invited_students
-    @user = User.find(params[:id])
+    @user =  InstructorfirstClass.find(params[:id])
     @school = SchoolAdmin.find(current_user.school_admin_id.to_i)
     user_mail = ''
     if params[:emails] != ''
@@ -224,4 +250,12 @@ class ClassesController < ApplicationController
       render :action => 'invite_students'
     end
   end
+  
+  def destroy
+    @instructorfirstclass = InstructorfirstClass.find(params[:id])
+    @instructorfirstclass.destroy
+    redirect_to classes_path
+  end
+  
 end
+  

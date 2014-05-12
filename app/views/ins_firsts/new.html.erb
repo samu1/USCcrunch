@@ -1,0 +1,55 @@
+
+<%= form_for(@insfirst) do |f| %>
+
+<% if  @insfirst.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize( @insfirst.errors.count, "error") %> 
+        prohibited this class from being saved:</h2>
+
+      <ul>
+        <%  @insfirst.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div> 
+    <%= f.label :sname %>
+    <%=  f.text_field :sname%>
+  </div>
+
+   <div> 
+    <%= f.label :sno %>
+    <%=  f.text_field :sno%>
+  </div>
+ <div> 
+    <%= f.label :sm1 %>
+    <%=  f.text_field :sm1%>
+  </div>
+ <div> 
+    <%= f.label :sm2 %>
+    <%=  f.text_field :sm2%>
+  </div> 
+   <div> 
+    <%= f.label :sm3 %>
+    <%=  f.text_field :sm3%>
+  </div>  
+    <div> 
+    <%= f.label :sm4 %>
+    <%=  f.text_field :sm4%>
+  </div>
+ <div> 
+    <%= f.label :sm5 %>
+    <%=  f.text_field :sm5%>
+  </div>
+
+
+
+
+  <div> 
+    <%=  f.submit "save"%>   
+  </div> 
+
+ 
+<%  end %>
