@@ -116,6 +116,22 @@ ActiveRecord::Schema.define(:version => 20140512093813) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "instructor_classes", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "syllabus_link_file_name"
+    t.string   "syllabus_link_content_type"
+    t.integer  "syllabus_link_file_size"
+    t.string   "class_photo_file_name"
+    t.string   "class_photo_content_type"
+    t.integer  "class_photo_file_size"
+    t.string   "class_theme"
+    t.string   "class_name"
+    t.text     "syllabus"
+    t.text     "class_description"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "instructorfirst_classes", :force => true do |t|
     t.string   "name"
     t.integer  "no"
@@ -126,6 +142,20 @@ ActiveRecord::Schema.define(:version => 20140512093813) do
     t.integer  "m5"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "joining_reports", :force => true do |t|
+    t.boolean  "mon"
+    t.boolean  "tue"
+    t.boolean  "wed"
+    t.boolean  "thu"
+    t.boolean  "fri"
+    t.boolean  "sat"
+    t.boolean  "sun"
+    t.integer  "user_id"
+    t.integer  "instructor_class_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "readings", :force => true do |t|
@@ -172,17 +202,6 @@ ActiveRecord::Schema.define(:version => 20140512093813) do
   add_index "school_admins", ["email"], :name => "index_school_admins_on_email", :unique => true
   add_index "school_admins", ["reset_password_token"], :name => "index_school_admins_on_reset_password_token", :unique => true
   add_index "school_admins", ["slug"], :name => "index_school_admins_on_slug"
-
-  create_table "teachers", :force => true do |t|
-    t.integer  "Tid"
-    t.string   "Tname"
-    t.string   "Class"
-    t.string   "Subjects"
-    t.integer  "Contact"
-    t.string   "Email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"
@@ -247,6 +266,8 @@ ActiveRecord::Schema.define(:version => 20140512093813) do
     t.string   "syllabus_link_file_name"
     t.string   "syllabus_link_content_type"
     t.integer  "syllabus_link_file_size"
+    t.string   "contact_no"
+    t.string   "guardian_no"
     t.integer  "tid"
     t.string   "tname"
     t.string   "teacher_class"
