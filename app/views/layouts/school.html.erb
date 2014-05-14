@@ -34,6 +34,7 @@
                 <li class="<%=  params[:controller] == "schools" && params[:action] == "show" ? "active" : ""%>"><%= link_to "Dashboard", school_path(@school), :class => "menubanneritem button" %></li>
                 <li class="<%=  params[:controller] == "students" && params[:action] == "new" || params[:action] == 'create' ? "active" : ""%>"><%= link_to "Invite Students", new_school_student_path(@school), :class => "menubanneritem button" %></li>
                 <li class="<%=  params[:controller] == "teachers" && params[:action] == "new" || params[:action] == 'create' ? "active" : ""%>"><%= link_to "Invite Teachers", new_school_teacher_path(@school), :class => "menubanneritem button" %></li>
+                <li class="<%=  params[:controller] == "section" && params[:action] == "new" || params[:action] == 'create' ? "active" : ""%>"><%= link_to "Sections", new_school_teacher_path(@school), :class => "menubanneritem button" %></li>
               </ul>
             <% end %>
             <ul class="nav pull-right">

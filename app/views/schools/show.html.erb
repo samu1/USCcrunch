@@ -22,6 +22,10 @@
         <th>Subject</th>
         <th>Contact</th>
             <th>Email</th>
+            <th></th>
+            <th>Role</th>
+
+         
       </tr>
                    <% for school in @students %>
         <tr style="text-align: center;">
@@ -30,8 +34,8 @@
            <td><%= school.teacher_class %></td>
             <td><%= school.subject %></td>
              <td><%= school.contact %></td>
-             
-          <% if school.reset_password_token == nil %>
+                   
+     <% if school.reset_password_token == nil %>
             <td>
                 <% if school.role == 'student' %>
                 <%= link_to school.email, school_student_path(@school, school) %>

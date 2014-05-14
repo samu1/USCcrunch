@@ -79,6 +79,9 @@ WebApp::Application.routes.draw do
         get :following
         get :posts
       end
+      collection do
+        get :hggf
+      end
     end
     resources :teachers
     resources :upload_csvs do
